@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Campus Game Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      opacity: 0.9;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .category {
+      margin-bottom: 50px;
+    }
+
+    .category h2 {
+      border-left: 5px solid #ffd369;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .price {
+      color: #ffd369;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🎮 Campus Game Store</h1>
+    <p>
+      Affordable Denuvo games available <strong>only for students within our college campus</strong>.
+      Trusted, fast, and student-friendly pricing.
+    </p>
+  </header>
+
+  <div class="container">
+
+    <!-- PREMIUM GAMES -->
+    <section class="category">
+      <h2>⭐ Premium Games</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>AAA Latest Release</h3>
+          <p>Top-tier Denuvo-protected games with best performance and reliability.</p>
+          <div class="price">₹XXX</div>
+        </div>
+
+        <div class="card">
+          <h3>High-End Bundle</h3>
+          <p>Includes updates, setup help, and post-install support.</p>
+          <div class="price">₹XXX</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOM / ON DEMAND -->
+    <section class="category">
+      <h2>🛠️ Custom / On-Demand Games</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Requested Game</h3>
+          <p>You request a specific Denuvo game. Availability and pricing decided per request.</p>
+          <div class="price">Price on request</div>
+          <div class="note">Depends on demand & difficulty</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STANDARD GAMES -->
+    <section class="category">
+      <h2>🎯 Standard Games</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Popular Older Titles</h3>
+          <p>Reliable and affordable games with standard support.</p>
+          <div class="price">₹XXX</div>
+        </div>
+
+        <div class="card">
+          <h3>Casual / Indie Games</h3>
+          <p>Lightweight games suitable for most systems.</p>
+          <div class="price">₹XXX</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>⚠️ Campus-only service • Not a public store</p>
+  </footer>
+
+</body>
+</html>
