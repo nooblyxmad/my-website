@@ -2,31 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Campus Game Store</title>
+  <title>Nexus Gaming Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-      color: white;
+      color: #ffffff;
     }
 
     header {
       text-align: center;
-      padding: 50px 20px;
+      padding: 60px 20px;
     }
 
     header h1 {
+      font-size: 2.8rem;
       margin-bottom: 10px;
-      font-size: 2.5rem;
     }
 
     header p {
-      opacity: 0.9;
-      max-width: 600px;
+      max-width: 650px;
       margin: auto;
+      opacity: 0.9;
+      line-height: 1.6;
     }
 
     .container {
@@ -36,26 +37,26 @@
     }
 
     .category {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
 
     .category h2 {
       border-left: 5px solid #ffd369;
       padding-left: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
     .card {
       background: rgba(0, 0, 0, 0.35);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .card h3 {
@@ -63,92 +64,175 @@
     }
 
     .price {
+      margin-top: 15px;
       color: #ffd369;
       font-weight: bold;
-      margin: 10px 0;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background-color: #ffd369;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      opacity: 0.85;
+    }
+
+    .game-list {
+      margin-top: 15px;
+      padding-left: 18px;
+    }
+
+    .game-list li {
+      margin-bottom: 6px;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      opacity: 0.7;
+      padding: 35px;
       font-size: 0.9rem;
-    }
-
-    .note {
-      font-size: 0.85rem;
-      opacity: 0.8;
-      margin-top: 10px;
+      opacity: 0.7;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>🎮 Campus Game Store</h1>
+<header>
+  <h1>Nexus Gaming Hub</h1>
+  <p>
+    A campus-focused platform offering access to premium PC games.
+    Designed for students seeking reliable, well-managed gaming solutions
+    within the college environment.
+  </p>
+</header>
+
+<div class="container">
+
+  <!-- PREMIUM GAMES -->
+  <section class="category">
+    <h2>Premium Games</h2>
+
+    <div class="cards">
+
+      <!-- Latest Release -->
+      <div class="card" id="latest-release">
+        <h3>Latest Release</h3>
+        <p>
+          Buy the latest premium game releases featuring official DRM protection
+          by Denuvo for maximum security, stability, and performance.
+        </p>
+        <p>
+          We offer the latest AAA titles, packed with the newest updates,
+          mechanics, graphical improvements, and gameplay features,
+          delivering a complete modern gaming experience.
+        </p>
+
+        <strong>Available Game List</strong>
+        <ul class="game-list">
+          <li><a href="#contact" style="color:#ffd369;">Game Title 1</a></li>
+          <li><a href="#contact" style="color:#ffd369;">Game Title 2</a></li>
+          <li><a href="#contact" style="color:#ffd369;">Game Title 3</a></li>
+        </ul>
+
+        <a class="button" href="#latest-release">Browse Latest Releases</a>
+      </div>
+
+      <!-- Bundle Bonus -->
+      <div class="card">
+        <h3>Bundle Bonus</h3>
+        <p>
+          Build your collection and save big with our bundle pricing system.
+          The more games you purchase, the lower the price per game—simple,
+          fair, and value-packed.
+        </p>
+        <p>
+          Whether you’re picking up a single title or completing an entire
+          series, bundles are designed to give you maximum savings without
+          compromise.
+        </p>
+
+        <div class="price">Pricing varies by bundle size</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CUSTOM / ON-DEMAND -->
+  <section class="category">
+    <h2>Custom / On-Demand Games</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Request Games</h3>
+        <p>
+          Can’t find a game on the list?
+          Submit a request and we’ll get that game exclusively for you,
+          on demand.
+        </p>
+
+        <strong>Pricing</strong>
+        <p>
+          Pricing varies based on demand and acquisition difficulty.
+        </p>
+
+        <a class="button" href="#contact">Submit a Game Request</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDARD GAMES -->
+  <section class="category">
+    <h2>Standard Games</h2>
+
+    <div class="cards">
+
+      <!-- Popular Titles -->
+      <div class="card">
+        <h3>Popular Titles</h3>
+        <p>
+          Reliable and affordable games backed by standard support,
+          offering stable performance and easy assistance for a smooth
+          gaming experience.
+        </p>
+
+        <a class="button" href="#popular-games">View Popular Games</a>
+      </div>
+
+      <!-- Casual / Indie -->
+      <div class="card">
+        <h3>Casual / Indie Games</h3>
+        <p>
+          Lightweight, well-optimized games that run smoothly on most systems,
+          offering engaging and accessible gameplay experiences.
+        </p>
+
+        <a class="button" href="#casual-games">Explore Casual & Indie Games</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT / PLACEHOLDER -->
+  <section class="category" id="contact">
+    <h2>Contact & Requests</h2>
     <p>
-      Affordable Denuvo games available <strong>only for students within our college campus</strong>.
-      Trusted, fast, and student-friendly pricing.
+      To check availability, pricing, or submit a custom request,
+      contact us directly through the campus channel.
     </p>
-  </header>
+  </section>
 
-  <div class="container">
+</div>
 
-    <!-- PREMIUM GAMES -->
-    <section class="category">
-      <h2>⭐ Premium Games</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>AAA Latest Release</h3>
-          <p>Top-tier Denuvo-protected games with best performance and reliability.</p>
-          <div class="price">₹XXX</div>
-        </div>
-
-        <div class="card">
-          <h3>High-End Bundle</h3>
-          <p>Includes updates, setup help, and post-install support.</p>
-          <div class="price">₹XXX</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CUSTOM / ON DEMAND -->
-    <section class="category">
-      <h2>🛠️ Custom / On-Demand Games</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Requested Game</h3>
-          <p>You request a specific Denuvo game. Availability and pricing decided per request.</p>
-          <div class="price">Price on request</div>
-          <div class="note">Depends on demand & difficulty</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STANDARD GAMES -->
-    <section class="category">
-      <h2>🎯 Standard Games</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Popular Older Titles</h3>
-          <p>Reliable and affordable games with standard support.</p>
-          <div class="price">₹XXX</div>
-        </div>
-
-        <div class="card">
-          <h3>Casual / Indie Games</h3>
-          <p>Lightweight games suitable for most systems.</p>
-          <div class="price">₹XXX</div>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <footer>
-    <p>⚠️ Campus-only service • Not a public store</p>
-  </footer>
+<footer>
+  Campus-only service. Not a public marketplace.
+</footer>
 
 </body>
 </html>
