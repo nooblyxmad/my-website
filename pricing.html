@@ -2,34 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Nexus Gaming Hub</title>
+  <title>Pricing | Nexus Gaming Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --accent: #ffd369;
+      --text-muted: rgba(255,255,255,0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(
+        180deg,
+        #070708 0%,
+        #0a0a0c 30%,
+        #0f0f12 60%,
+        #16161a 100%
+      );
       color: #ffffff;
+      min-height: 100vh;
     }
 
-    header {
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .site-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid var(--glass-border);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 20px 70px;
       text-align: center;
-      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    header h1 {
+    .hero h1 {
       font-size: 2.8rem;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
-    header p {
+    .hero p {
       max-width: 650px;
       margin: auto;
-      opacity: 0.9;
-      line-height: 1.6;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
     }
 
+    /* ===== PRICING SECTIONS ===== */
     .container {
       max-width: 1100px;
       margin: auto;
@@ -37,202 +118,137 @@
     }
 
     .category {
-      margin-bottom: 60px;
+      margin-bottom: 70px;
     }
 
     .category h2 {
-      border-left: 5px solid #ffd369;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      border-left: 5px solid var(--accent);
       padding-left: 12px;
-      margin-bottom: 25px;
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      gap: 24px;
     }
 
     .card {
-      background: rgba(0, 0, 0, 0.35);
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
 
     .card h3 {
       margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
     }
 
-    .price {
-      margin-top: 15px;
-      color: #ffd369;
-      font-weight: bold;
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
-    .button {
+    .cta {
       display: inline-block;
-      margin-top: 18px;
-      padding: 10px 16px;
-      border-radius: 8px;
-      background-color: #ffd369;
+      margin-top: 20px;
+      padding: 12px 22px;
+      border-radius: 14px;
+      background: var(--accent);
       color: #000;
+      font-weight: 700;
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .button:hover {
-      opacity: 0.85;
-    }
-
-    .game-list {
-      margin-top: 15px;
-      padding-left: 18px;
-    }
-
-    .game-list li {
-      margin-bottom: 6px;
+      font-size: 0.95rem;
     }
 
     footer {
       text-align: center;
-      padding: 35px;
-      font-size: 0.9rem;
-      opacity: 0.7;
+      padding: 30px 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Nexus Gaming Hub</h1>
-  <p>
-    A campus-focused platform offering access to premium PC games.
-    Designed for students seeking reliable, well-managed gaming solutions
-    within the college environment.
-  </p>
-</header>
-
-<div class="container">
-
-  <!-- PREMIUM GAMES -->
-  <section class="category">
-    <h2>Premium Games</h2>
-
-    <div class="cards">
-
-      <!-- Latest Release -->
-      <div class="card" id="latest-release">
-        <h3>Latest Release</h3>
-        <p>
-          Buy the latest premium game releases featuring official DRM protection
-          by Denuvo for maximum security, stability, and performance.
-        </p>
-        <p>
-          We offer the latest AAA titles, packed with the newest updates,
-          mechanics, graphical improvements, and gameplay features,
-          delivering a complete modern gaming experience.
-        </p>
-
-        <strong>Available Game List</strong>
-        <ul class="game-list">
-          <li><a href="#contact" style="color:#ffd369;">Game Title 1</a></li>
-          <li><a href="#contact" style="color:#ffd369;">Game Title 2</a></li>
-          <li><a href="#contact" style="color:#ffd369;">Game Title 3</a></li>
-        </ul>
-
-        <a class="button" href="#latest-release">Browse Latest Releases</a>
-      </div>
-
-      <!-- Bundle Bonus -->
-      <div class="card">
-        <h3>Bundle Bonus</h3>
-        <p>
-          Build your collection and save big with our bundle pricing system.
-          The more games you purchase, the lower the price per game—simple,
-          fair, and value-packed.
-        </p>
-        <p>
-          Whether you’re picking up a single title or completing an entire
-          series, bundles are designed to give you maximum savings without
-          compromise.
-        </p>
-
-        <div class="price">Pricing varies by bundle size</div>
-      </div>
-
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-left">
+      <div class="logo">N</div>
+      <div class="site-name">Nexus Gaming Hub</div>
     </div>
-  </section>
 
-  <!-- CUSTOM / ON-DEMAND -->
-  <section class="category">
-    <h2>Custom / On-Demand Games</h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Request Games</h3>
-        <p>
-          Can’t find a game on the list?
-          Submit a request and we’ll get that game exclusively for you,
-          on demand.
-        </p>
-
-        <strong>Pricing</strong>
-        <p>
-          Pricing varies based on demand and acquisition difficulty.
-        </p>
-
-        <a class="button" href="#contact">Submit a Game Request</a>
-      </div>
+    <div class="nav-right">
+      <a class="nav-btn" href="index.html">Home</a>
+      <a class="nav-btn" href="pricing.html">Pricing</a>
     </div>
-  </section>
+  </div>
 
-  <!-- STANDARD GAMES -->
-  <section class="category">
-    <h2>Standard Games</h2>
-
-    <div class="cards">
-
-      <!-- Popular Titles -->
-      <div class="card">
-        <h3>Popular Titles</h3>
-        <p>
-          Reliable and affordable games backed by standard support,
-          offering stable performance and easy assistance for a smooth
-          gaming experience.
-        </p>
-
-        <a class="button" href="#popular-games">View Popular Games</a>
-      </div>
-
-      <!-- Casual / Indie -->
-      <div class="card">
-        <h3>Casual / Indie Games</h3>
-        <p>
-          Lightweight, well-optimized games that run smoothly on most systems,
-          offering engaging and accessible gameplay experiences.
-        </p>
-
-        <a class="button" href="#casual-games">Explore Casual & Indie Games</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACT / PLACEHOLDER -->
-  <section class="category" id="contact">
-    <h2>Contact & Requests</h2>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Pricing & Plans</h1>
     <p>
-      To check availability, pricing, or submit a custom request,
-      contact us directly through the campus channel.
+      Transparent, flexible pricing designed for campus users.
+      Choose the option that fits your needs, from premium access to
+      custom on-demand requests.
     </p>
   </section>
 
-</div>
+  <div class="container">
 
-<footer>
-  Campus-only service. Not a public marketplace.
-</footer>
+    <!-- PREMIUM -->
+    <section class="category">
+      <h2>Premium Access</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Latest Releases</h3>
+          <p>
+            Premium access to the latest high-demand PC titles,
+            focusing on stability, performance, and a complete experience.
+          </p>
+          <a class="cta" href="games.html">Explore Titles</a>
+        </div>
+
+        <div class="card">
+          <h3>Bundle Bonus</h3>
+          <p>
+            Reduced per-title pricing when purchasing multiple games.
+            Ideal for building collections or completing series.
+          </p>
+          <a class="cta" href="games.html">View Bundles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOM -->
+    <section class="category">
+      <h2>Custom / On-Demand</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Request-Based Pricing</h3>
+          <p>
+            Pricing varies based on demand, availability, and acquisition
+            complexity. Ideal for specific or uncommon requests.
+          </p>
+          <a class="cta" href="index.html#about">Submit Request</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    Campus-only service. Not a public marketplace.
+  </footer>
 
 </body>
 </html>
