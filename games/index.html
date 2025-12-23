@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Games | Nexus Gaming Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --accent: #ffd369;
+      --text-muted: rgba(255,255,255,0.75);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(
+        180deg,
+        #070708 0%,
+        #0a0a0c 30%,
+        #0f0f12 60%,
+        #16161a 100%
+      );
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 28px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .site-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid var(--glass-border);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 90px 20px 60px;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    /* ===== LIST ===== */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 30px;
+      border-radius: 18px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .row:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .row-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .row-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      max-width: 700px;
+    }
+
+    .arrow {
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 36px 20px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-left">
+      <div class="logo">N</div>
+      <div class="site-name">Nexus Gaming Hub</div>
+    </div>
+
+    <div class="nav-right">
+      <a class="nav-btn" href="/">Home</a>
+      <a class="nav-btn" href="/pricing">Pricing</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <section class="header">
+    <h1>Games Library</h1>
+    <p>
+      Browse all available game categories. Each section is curated
+      for performance, stability, and a smooth campus gaming experience.
+    </p>
+  </section>
+
+  <!-- LIST -->
+  <div class="container">
+    <div class="list">
+
+      <a class="row" href="/games/titles">
+        <div>
+          <div class="row-title">Latest Releases</div>
+          <div class="row-desc">
+            The newest AAA titles with full updates, modern features,
+            and official DRM protection.
+          </div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="row" href="/games/bundles">
+        <div>
+          <div class="row-title">Game Bundles</div>
+          <div class="row-desc">
+            Discounted collections and complete series with reduced
+            per-title pricing.
+          </div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="row" href="/games/popular">
+        <div>
+          <div class="row-title">Popular Titles</div>
+          <div class="row-desc">
+            Reliable and affordable games backed by standard support
+            and stable performance.
+          </div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="row" href="/games/indie">
+        <div>
+          <div class="row-title">Casual & Indie Games</div>
+          <div class="row-desc">
+            Lightweight, well-optimized titles that run smoothly on
+            most systems.
+          </div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    Campus-only service. Game availability may vary.
+  </footer>
+
+</body>
+</html>
