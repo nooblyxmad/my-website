@@ -7,64 +7,104 @@
 
   <style>
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-bg: rgba(20, 20, 25, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.12);
       --accent: #ffd369;
+      --accent-glow: rgba(255, 211, 105, 0.3);
       --text-muted: rgba(255,255,255,0.75);
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(
-        180deg,
-        #070708 0%,
-        #0a0a0c 30%,
-        #0f0f12 60%,
-        #16161a 100%
-      );
+      font-family: var(--font-stack);
+      background:
+        radial-gradient(circle at 15% 15%, #1a1a2e 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, #16213e 0%, transparent 45%),
+        #050505;
+      background-attachment: fixed;
       color: #ffffff;
       min-height: 100vh;
     }
 
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    /* ===== LIQUID INTERACTION ===== */
+    .liquid-interactive {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .liquid-interactive::before {
+      content: "";
+      position: absolute;
+      top: var(--y, 0);
+      left: var(--x, 0);
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle closest-side, var(--accent-glow), transparent);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .liquid-interactive:hover::before {
+      opacity: 1;
+    }
+
+    /* ===== NAVBAR (LIQUID GLASS) ===== */
+    .navbar-container {
+      position: fixed;
+      top: 30px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .navbar {
+      display: flex;
       align-items: center;
-      padding: 16px 28px;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1050px;
+      padding: 14px 32px;
       background: var(--glass-bg);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--glass-border);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
     }
 
     .logo {
-      width: 38px;
-      height: 38px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       background: var(--accent);
       color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
+      font-weight: 800;
+      font-size: 1.3rem;
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .site-name {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.8px;
     }
 
     .nav-right {
@@ -73,22 +113,26 @@
     }
 
     .nav-btn {
-      padding: 10px 18px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid var(--glass-border);
+      padding: 12px 24px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid transparent;
       color: #fff;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-btn:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.12);
+      transform: scale(1.05);
+      border-color: var(--glass-border);
     }
 
     /* ===== HEADER ===== */
     .header {
-      padding: 90px 20px 60px;
+      padding: 200px 20px 60px;
       text-align: center;
       max-width: 900px;
       margin: auto;
@@ -123,19 +167,19 @@
       justify-content: space-between;
       align-items: center;
       padding: 26px 30px;
-      border-radius: 18px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(18px);
       border: 1px solid var(--glass-border);
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       text-decoration: none;
       color: #fff;
-      transition: transform 0.15s ease, background 0.15s ease;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
     .row:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.14);
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.08);
     }
 
     .row-title {
@@ -157,7 +201,7 @@
 
     footer {
       text-align: center;
-      padding: 36px 20px;
+      padding: 60px 20px;
       font-size: 0.95rem;
       color: var(--text-muted);
     }
@@ -167,24 +211,26 @@
 <body>
 
   <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="nav-left">
-      <div class="logo">N</div>
-      <div class="site-name">Nexus Gaming Hub</div>
-    </div>
+  <div class="navbar-container">
+    <nav class="navbar">
+      <div class="nav-left">
+        <div class="logo">N</div>
+        <div class="site-name">Nexus Gaming Hub</div>
+      </div>
 
-    <div class="nav-right">
-      <a class="nav-btn" href="/">Home</a>
-      <a class="nav-btn" href="/pricing">Pricing</a>
-    </div>
+      <div class="nav-right">
+        <a class="nav-btn liquid-interactive" href="/">Home</a>
+        <a class="nav-btn liquid-interactive" href="/pricing">Pricing</a>
+        <a class="nav-btn liquid-interactive" href="/games">Games</a>
+      </div>
+    </nav>
   </div>
 
   <!-- HEADER -->
   <section class="header">
     <h1>Games Library</h1>
     <p>
-      Browse all available game categories. Each section is curated
-      for performance, stability, and a smooth campus gaming experience.
+      Browse all available game categories. Each section is divided according to their release date and popularity.
     </p>
   </section>
 
@@ -192,7 +238,7 @@
   <div class="container">
     <div class="list">
 
-      <a class="row" href="/games/titles">
+      <a class="row liquid-interactive" href="/games/titles">
         <div>
           <div class="row-title">Latest Releases</div>
           <div class="row-desc">
@@ -203,7 +249,7 @@
         <div class="arrow">→</div>
       </a>
 
-      <a class="row" href="/games/bundles">
+      <a class="row liquid-interactive" href="/games/bundles">
         <div>
           <div class="row-title">Game Bundles</div>
           <div class="row-desc">
@@ -214,7 +260,7 @@
         <div class="arrow">→</div>
       </a>
 
-      <a class="row" href="/games/popular">
+      <a class="row liquid-interactive" href="/games/popular">
         <div>
           <div class="row-title">Popular Titles</div>
           <div class="row-desc">
@@ -225,7 +271,7 @@
         <div class="arrow">→</div>
       </a>
 
-      <a class="row" href="/games/indie">
+      <a class="row liquid-interactive" href="/games/indie">
         <div>
           <div class="row-title">Casual & Indie Games</div>
           <div class="row-desc">
@@ -240,8 +286,18 @@
   </div>
 
   <footer>
-    Campus-only service. Game availability may vary.
+    Campus-only service. Made with ❤️ by NooblyxMad. Play on.
   </footer>
+
+  <script>
+    document.querySelectorAll('.liquid-interactive').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        el.style.setProperty('--x', `${e.clientX - rect.left}px`);
+        el.style.setProperty('--y', `${e.clientY - rect.top}px`);
+      });
+    });
+  </script>
 
 </body>
 </html>
