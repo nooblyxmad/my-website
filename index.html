@@ -32,98 +32,97 @@
       min-height: 100vh;
     }
 
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 28px; /* slightly larger */
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--glass-border);
-    }
+    /* ===== NAVBAR (IDENTICAL TO PRICING) ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--glass-border);
+}
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    .logo {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
+.logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: var(--accent);
   color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.05rem;
+}
+
+.site-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.nav-right {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+  background: rgba(255,255,255,0.2);
 }
 
 
+    /* ===== HERO (IDENTICAL SCALE TO PRICING) ===== */
+.hero {
+  padding: 100px 20px 70px;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+}
 
-    .site-name {
-      font-size: 1.25rem; /* increased */
-      font-weight: 600;
-    }
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 16px;
+}
 
-    .nav-right {
-      display: flex;
-      gap: 12px;
-    }
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
 
-    .nav-btn {
-      padding: 10px 18px; /* bigger */
-      border-radius: 12px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid var(--glass-border);
-      color: #fff;
-      text-decoration: none;
-      font-size: 1rem; /* increased */
-      backdrop-filter: blur(10px);
-    }
+.hero .cta {
+  margin-top: 28px;
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
 
-    .nav-btn:hover {
-      background: rgba(255,255,255,0.2);
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 140px 20px 120px; /* slightly taller */
-      text-align: center;
-      max-width: 950px;
-      margin: auto;
-    }
-
-    .hero h1 {
-      font-size: 3.4rem; /* increased */
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      color: var(--text-muted);
-      line-height: 1.75;
-      font-size: 1.2rem; /* increased */
-    }
-
-    .hero .cta {
-      margin-top: 40px;
-      display: inline-block;
-      padding: 18px 40px; /* BIGGER BUTTON */
-      border-radius: 18px;
-      background: var(--accent);
-      color: #000;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1.15rem; /* increased */
-    }
 
     /* ===== ABOUT ===== */
     #about {
@@ -186,7 +185,7 @@
   <div class="navbar">
     <div class="nav-left">
       <div class="logo">N</div>
-      <div class="site-name">Nexus Gaming Hub</div>
+      <div class="site-name">VITB Games</div>
     </div>
 
     <div class="nav-right">
@@ -252,5 +251,6 @@
 
 </body>
 </html>
+
 
 
