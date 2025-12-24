@@ -2,196 +2,278 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Pricing | Nexus Gaming Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing | Nooblyx Gaming Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
   <style>
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.18);
-      --accent: #ffd369;
-      --text-muted: rgba(255,255,255,0.75);
+      /* Liquid Glass Variables */
+      --glass-bg: rgba(20, 20, 25, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --accent: #ffd369; /* Your signature gold */
+      --accent-glow: rgba(255, 211, 105, 0.3);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.6);
+      /* Apple UI Font Stack */
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    * { box-sizing: border-box; }
+    * { 
+      box-sizing: border-box; 
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(
-        180deg,
-        #070708 0%,
-        #0a0a0c 30%,
-        #0f0f12 60%,
-        #16161a 100%
-      );
-      color: #ffffff;
+      font-family: var(--font-stack);
+      background: #000;
+      color: var(--text-main);
       min-height: 100vh;
+      /* Dynamic Mesh Background */
+      background: 
+        radial-gradient(circle at 15% 15%, #1a1a2e 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, #16213e 0%, transparent 45%),
+        #050505;
+      background-attachment: fixed;
     }
 
-    /* ===== NAVBAR ===== */
+    /* ===== LIQUID GLASS INTERACTION SYSTEM ===== */
+    .liquid-interactive {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .liquid-interactive::before {
+      content: "";
+      position: absolute;
+      top: var(--y, 0);
+      left: var(--x, 0);
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle closest-side, var(--accent-glow), transparent);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .liquid-interactive:hover::before {
+      opacity: 1;
+    }
+
+    /* Ensure content stays above the glow layer */
+    .nav-btn span, .cta span, .card h3, .card p, .hero h1, .hero p, .category h2 {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== NAVBAR (MATCHED TO REFERENCE SIZE) ===== */
+    .navbar-container {
+      position: fixed;
+      top: 30px; /* Matched to reference */
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
     .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 24px;
+      width: 100%;
+      max-width: 1050px; /* Matched to reference */
+      padding: 14px 32px; /* Matched to reference */
       background: var(--glass-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--glass-border);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px; /* Matched to reference panel style */
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
     }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
+    .nav-left { display: flex; align-items: center; gap: 16px; }
     .logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: 44px; /* Matched to reference */
+      height: 44px; /* Matched to reference */
+      border-radius: 12px; /* Matched to reference */
       background: var(--accent);
       color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
+      font-weight: 800;
+      font-size: 1.3rem;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    .site-name { 
+      font-weight: 700; 
+      font-size: 1.5rem; /* Matched to reference */
+      letter-spacing: -0.8px; 
     }
 
-    .site-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .nav-right {
-      display: flex;
-      gap: 10px;
-    }
-
+    .nav-links { display: flex; gap: 12px; }
     .nav-btn {
-      padding: 8px 14px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid var(--glass-border);
-      color: #fff;
+      padding: 12px 24px; /* Matched to reference */
+      border-radius: 14px; /* Matched to reference */
+      color: var(--text-main);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 1.05rem; /* Matched to reference */
+      font-weight: 600;
+      background: rgba(255,255,255,0.06);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
     }
-
-    .nav-btn:hover {
-      background: rgba(255,255,255,0.2);
+    .nav-btn:hover { 
+      background: rgba(255,255,255,0.12); 
+      transform: scale(1.05); 
+      border-color: var(--glass-border);
     }
 
     /* ===== HERO ===== */
     .hero {
-      padding: 100px 20px 70px;
+      padding: 200px 20px 100px;
       text-align: center;
       max-width: 900px;
       margin: auto;
     }
-
     .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 16px;
+      font-size: 4.2rem;
+      font-weight: 800;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+      background: linear-gradient(to bottom, #fff 50%, rgba(255,255,255,0.5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
     }
-
     .hero p {
-      max-width: 650px;
-      margin: auto;
       color: var(--text-muted);
+      font-size: 1.3rem;
       line-height: 1.7;
-      font-size: 1.05rem;
+      max-width: 750px;
+      margin: auto;
     }
 
     /* ===== CONTENT ===== */
     .container {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
-      padding: 20px;
+      padding: 20px 20px 120px;
     }
 
-    .category {
-      margin-bottom: 70px;
-    }
-
+    .category { margin-bottom: 80px; }
     .category h2 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-      border-left: 5px solid var(--accent);
-      padding-left: 12px;
+      margin-bottom: 60px;
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -1.5px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
     }
 
     .card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border: 1px solid var(--glass-border);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      border-radius: 28px;
+      padding: 45px;
+      transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--accent);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
 
     .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.3rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: var(--accent);
+      letter-spacing: -0.5px;
     }
 
     .card p {
-      margin: 0;
       color: var(--text-muted);
-      line-height: 1.6;
-      font-size: 0.95rem;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      flex-grow: 1;
     }
 
     .cta {
       display: inline-block;
       margin-top: 20px;
-      padding: 12px 22px;
-      border-radius: 14px;
+      padding: 16px 40px;
+      border-radius: 100px;
       background: var(--accent);
       color: #000;
       font-weight: 700;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
+      text-align: center;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 30px var(--accent-glow);
     }
+
+    .cta:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 15px 40px var(--accent-glow); }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      padding: 100px 20px 60px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.3);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    @media (max-width: 850px) {
+      .hero h1 { font-size: 3rem; }
+      .navbar { max-width: 95%; padding: 10px 20px; }
+      .site-name { font-size: 1.2rem; }
+      .nav-btn { padding: 8px 16px; font-size: 0.9rem; }
+      .logo { width: 36px; height: 36px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="nav-left">
-      <div class="logo">N</div>
-      <div class="site-name">Nexus Gaming Hub</div>
-    </div>
+  <div class="navbar-container">
+    <nav class="navbar">
+      <div class="nav-left">
+        <div class="logo">N</div>
+        <div class="site-name">VITB Games</div>
+      </div>
 
-    <div class="nav-right">
-      <a class="nav-btn" href="/">Home</a>
-      <a class="nav-btn" href="/pricing">Pricing</a>
-    </div>
+      <div class="nav-links">
+        <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/"><span>Home</span></a>
+        <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/#about"><span>About</span></a>
+        <a class="nav-btn liquid-interactive" href="/pricing"><span>Pricing</span></a>
+        <a class="nav-btn liquid-interactive" href="/games"><span>Games</span></a>
+      </div>
+    </nav>
   </div>
 
-  <!-- HERO -->
   <section class="hero">
     <h1>Pricing & Plans</h1>
     <p>
@@ -203,66 +285,66 @@
 
   <div class="container">
 
-    <!-- PREMIUM -->
     <section class="category">
       <h2>Premium Access</h2>
       <div class="cards">
-        <div class="card">
+        <div class="card liquid-interactive">
           <h3>Latest Releases</h3>
           <p>
-            Premium access to the latest high-demand PC ,
+            Premium access to the latest high-demand PC titles,
             focusing on stability, performance, and a complete experience.
           </p>
-          <a class="cta" href="/games/titles/">Explore Titles </a>
+          <p> Price: Upto ₹600/- </p>
+          <a class="cta" href="/games/titles/"><span>Explore Titles</span></a>
         </div>
 
-        <div class="card">
+        <div class="card liquid-interactive">
           <h3>Bundle Bonus</h3>
           <p>
             Reduced per-title pricing when purchasing multiple games.
             Ideal for building collections or completing series.
           </p>
-          <a class="cta" href="/games/bundles">View Game Bundles</a>
+          <p> Price: Upto ₹500/- </p>
+          <a class="cta" href="/games/bundles"><span>View Game Bundles</span></a>
         </div>
       </div>
     </section>
 
-    <!-- STANDARD -->
     <section class="category">
       <h2>Standard Games</h2>
       <div class="cards">
-        <div class="card">
-          <h3>Popular </h3>
+        <div class="card liquid-interactive">
+          <h3>Popular</h3>
           <p>
             Reliable and affordable games backed by standard support,
             offering stable performance and easy assistance for a smooth
             gaming experience.
           </p>
-          <a class="cta" href="/games/popular/">View Popular Games</a>
+          <p> Price: Upto ₹300/- </p>
+          <a class="cta" href="/games/popular/"><span>View Popular Games</span></a>
         </div>
 
-        <div class="card">
+        <div class="card liquid-interactive">
           <h3>Casual / Indie Games</h3>
           <p>
             Lightweight, well-optimized games that run smoothly on most
             systems, offering engaging and accessible gameplay experiences.
           </p>
-          <a class="cta" href="/games/indie">Explore Casual & Indie Games</a>
+          <p> Price: ₹100/- each </p>
+          <a class="cta" href="/games/indie"><span>Explore Casual & Indie</span></a>
         </div>
       </div>
     </section>
 
-    <!-- CUSTOM -->
     <section class="category">
       <h2>Custom / On-Demand</h2>
       <div class="cards">
-        <div class="card">
+        <div class="card liquid-interactive">
           <h3>Request-Based Pricing</h3>
           <p>
-            Pricing varies based on demand, availability, and acquisition
-            complexity. Ideal for specific or uncommon requests.
+            Pricing varies based on demand, availability, and complexity. If it is not in the games list, submit a request here.
           </p>
-          <a class="cta" href="/#about">Submit Request</a>
+          <a class="cta" href="/#about"><span>Submit Request</span></a>
         </div>
       </div>
     </section>
@@ -270,8 +352,23 @@
   </div>
 
   <footer>
-    Campus-only service. Not a public marketplace.
+    Campus-only service. Made with ❤️ by NooblyxMad.
   </footer>
+
+  <script>
+    const interactives = document.querySelectorAll('.liquid-interactive');
+
+    interactives.forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        el.style.setProperty('--x', `${x}px`);
+        el.style.setProperty('--y', `${y}px`);
+      });
+    });
+  </script>
 
 </body>
 </html>
