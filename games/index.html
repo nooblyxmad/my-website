@@ -29,7 +29,6 @@
       min-height: 100vh;
     }
 
-    /* ===== LIQUID INTERACTION ===== */
     .liquid-interactive {
       position: relative;
       overflow: hidden;
@@ -50,11 +49,8 @@
       z-index: 0;
     }
 
-    .liquid-interactive:hover::before {
-      opacity: 1;
-    }
+    .liquid-interactive:hover::before { opacity: 1; }
 
-    /* ===== NAVBAR (LIQUID GLASS) ===== */
     .navbar-container {
       position: fixed;
       top: 30px;
@@ -130,7 +126,6 @@
       border-color: var(--glass-border);
     }
 
-    /* ===== HEADER ===== */
     .header {
       padding: 200px 20px 60px;
       text-align: center;
@@ -149,7 +144,6 @@
       line-height: 1.7;
     }
 
-    /* ===== LIST ===== */
     .container {
       max-width: 1100px;
       margin: auto;
@@ -210,7 +204,6 @@
 
 <body>
 
-  <!-- NAVBAR -->
   <div class="navbar-container">
     <nav class="navbar">
       <div class="nav-left">
@@ -220,21 +213,21 @@
 
       <div class="nav-right">
         <a class="nav-btn liquid-interactive" href="/">Home</a>
+        <a class="nav-btn liquid-interactive" href="/#about">About</a>
         <a class="nav-btn liquid-interactive" href="/pricing">Pricing</a>
         <a class="nav-btn liquid-interactive" href="/games">Games</a>
       </div>
     </nav>
   </div>
 
-  <!-- HEADER -->
   <section class="header">
     <h1>Games Library</h1>
     <p>
-      Browse all available game categories. Each section is divided according to their release date and popularity.
+      Browse all available game categories. Each section is curated
+      for performance, stability, and a smooth campus gaming experience.
     </p>
   </section>
 
-  <!-- LIST -->
   <div class="container">
     <div class="list">
 
@@ -286,7 +279,7 @@
   </div>
 
   <footer>
-    Campus-only service. Made with ❤️ by NooblyxMad. Play on.
+    Campus-only service. Game availability may vary.
   </footer>
 
   <script>
