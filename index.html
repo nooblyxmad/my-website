@@ -42,7 +42,6 @@
     }
 
     /* ===== LIQUID GLASS INTERACTION SYSTEM ===== */
-    /* This class is added to anything that should have the cursor glow */
     .liquid-interactive {
       position: relative;
       overflow: hidden;
@@ -67,37 +66,35 @@
       opacity: 1;
     }
 
-    /* Ensure text stays above the glow */
     .nav-btn span, .cta span, .feature-card h3, .feature-card p {
       position: relative;
       z-index: 1;
     }
 
-    /* ===== ENLARGED LIQUID NAVBAR ===== */
+    /* ===== RECTANGULAR FULL-WIDTH NAVBAR PANEL ===== */
     .navbar-container {
       position: fixed;
-      top: 30px;
+      top: 0; /* Starts exactly at the top */
       left: 0;
       right: 0;
       z-index: 1000;
       display: flex;
       justify-content: center;
-      padding: 0 20px;
     }
 
     .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
-      max-width: 1050px;
-      padding: 14px 32px;
+      width: 100%; /* Spans full width */
+      max-width: 100%; /* Removed max-width restriction */
+      padding: 18px 60px; /* Adjusted padding for the panel look */
       background: var(--glass-bg);
       backdrop-filter: blur(25px) saturate(180%);
       -webkit-backdrop-filter: blur(25px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      border-bottom: 1px solid var(--glass-border); /* Border only on bottom */
+      border-radius: 0; /* Complete rectangle, no pill shape */
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     }
 
     .nav-left {
@@ -151,7 +148,7 @@
 
     /* ===== HERO SECTION ===== */
     .hero {
-      padding: 200px 20px 100px;
+      padding: 220px 20px 100px;
       text-align: center;
       max-width: 900px;
       margin: auto;
@@ -260,7 +257,7 @@
     /* MOBILE OPTIMIZATION */
     @media (max-width: 850px) {
       .hero h1 { font-size: 3rem; }
-      .navbar { max-width: 95%; padding: 10px 20px; }
+      .navbar { padding: 10px 20px; }
       .site-name { font-size: 1.2rem; }
       .nav-btn { padding: 8px 16px; font-size: 0.9rem; }
       .logo { width: 36px; height: 36px; }
@@ -356,17 +353,14 @@
   </footer>
 
   <script>
-    // Liquid Glass Logic: Cursor Tracking
     const interactives = document.querySelectorAll('.liquid-interactive');
 
     interactives.forEach(el => {
       el.addEventListener('mousemove', e => {
         const rect = el.getBoundingClientRect();
-        // Calculate cursor position relative to the element
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        // Set CSS variables for the background glow
         el.style.setProperty('--x', `${x}px`);
         el.style.setProperty('--y', `${y}px`);
       });
@@ -375,6 +369,3 @@
 
 </body>
 </html>
-
-
-
