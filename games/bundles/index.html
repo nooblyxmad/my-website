@@ -2,227 +2,242 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Game Bundles | Nexus Gaming Hub</title>
+  <title>Game Bundles | VITB Games</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-bg: rgba(20, 20, 25, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.12);
       --accent: #ffd369;
-      --text-muted: rgba(255,255,255,0.75);
+      --accent-glow: rgba(255, 211, 105, 0.3);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.6);
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(
-        180deg,
-        #070708 0%,
-        #0a0a0c 30%,
-        #0f0f12 60%,
-        #16161a 100%
-      );
-      color: #ffffff;
+      font-family: var(--font-stack);
+      background: radial-gradient(circle at 15% 15%, #1a1a2e 0%, transparent 45%),
+                  radial-gradient(circle at 85% 85%, #16213e 0%, transparent 45%), #050505;
+      background-attachment: fixed;
+      color: var(--text-main);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: sticky;
+    /* Liquid System - Performance Optimized */
+    .liquid-interactive { position: relative; overflow: hidden; will-change: transform; }
+    .liquid-interactive::before {
+      content: "";
+      position: absolute;
+      top: var(--y, 0);
+      left: var(--x, 0);
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle closest-side, var(--accent-glow), transparent);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .liquid-interactive:hover::before { opacity: 1; }
+
+    /* ===== RECTANGULAR FULL-WIDTH NAVBAR PANEL ===== */
+    .navbar-container {
+      position: fixed;
       top: 0;
-      z-index: 100;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 24px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--glass-border);
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #000;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-weight: 700;
     }
 
-    .site-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .nav-right {
+    .navbar {
       display: flex;
-      gap: 10px;
-    }
-
-    .nav-btn {
-      padding: 8px 14px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid var(--glass-border);
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-
-    .nav-btn:hover {
-      background: rgba(255,255,255,0.2);
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 90px 20px 50px;
-      text-align: center;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .hero h1 {
-      font-size: 2.6rem;
-      margin-bottom: 14px;
-    }
-
-    .hero p {
-      color: var(--text-muted);
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.7;
-    }
-
-    /* ===== BUNDLE GRID ===== */
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .bundle-card {
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 100%; 
+      padding: 18px 60px;
       background: var(--glass-bg);
-      backdrop-filter: blur(14px);
-      border: 1px solid var(--glass-border);
-      border-radius: 18px;
-      padding: 26px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border-bottom: 1px solid var(--glass-border);
+      border-radius: 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     }
 
-    .bundle-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.25rem;
+    .nav-left { display: flex; align-items: center; gap: 16px; }
+    .logo { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; }
+    .site-name { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.8px; }
+
+    .nav-links { display: flex; gap: 12px; }
+    .nav-btn {
+      padding: 12px 24px; border-radius: 14px; color: var(--text-main);
+      text-decoration: none; font-size: 1.05rem; font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255,255,255,0.06); border: 1px solid transparent;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.12); transform: scale(1.05); border-color: var(--glass-border); }
+    .nav-btn span { position: relative; z-index: 1; }
+
+    /* Main Content Layout */
+    .main-content { padding: 220px 20px 80px; max-width: 1200px; margin: 0 auto; }
+    .page-header { text-align: center; margin-bottom: 40px; }
+    .page-title { font-size: 4rem; font-weight: 800; letter-spacing: -2.5px; margin-bottom: 20px; background: linear-gradient(to bottom, #fff 50%, rgba(255,255,255,0.5)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
+    .page-description { color: var(--text-muted); font-size: 1.3rem; line-height: 1.7; max-width: 800px; margin: 0 auto; }
+
+    /* Search Bar */
+    .search-container { max-width: 600px; margin: 0 auto 50px; padding: 0 20px; }
+    .search-box { width: 100%; padding: 18px 25px; border-radius: 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-main); font-size: 1.1rem; backdrop-filter: blur(10px); outline: none; transition: border-color 0.2s; }
+    .search-box:focus { border-color: var(--accent); }
+
+    /* Grid Layout */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; margin-bottom: 80px; }
+    
+    .bundle-card { 
+      background: rgba(20, 20, 25, 0.3); 
+      backdrop-filter: blur(20px); 
+      border: 1px solid var(--glass-border); 
+      border-radius: 28px; 
+      padding: 35px; 
+      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
+      min-height: 280px; 
+      display: flex; 
+      flex-direction: column; 
+    }
+    .bundle-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+    .bundle-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; color: var(--accent); position: relative; z-index: 1; }
+    
+    .tag { 
+      display: inline-block; 
+      padding: 6px 14px; 
+      background: rgba(255, 211, 105, 0.15); 
+      color: var(--accent); 
+      border-radius: 12px; 
+      font-size: 0.85rem; 
+      font-weight: 600; 
+      margin-bottom: 20px; 
+      width: fit-content;
     }
 
-    .bundle-card p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .bundle-description { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 25px; flex-grow: 1; position: relative; z-index: 1; }
 
-    .tag {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 6px 10px;
-      font-size: 0.75rem;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid var(--glass-border);
-    }
+    .no-results { text-align: center; padding: 40px; grid-column: 1 / -1; display: none; }
+    .no-results h2 { font-size: 2.2rem; color: var(--accent); letter-spacing: -1px; }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+    footer { text-align: center; padding: 60px 20px 40px; font-size: 1rem; color: rgba(255,255,255,0.3); border-top: 1px solid var(--glass-border); }
+
+    @media (max-width: 850px) { 
+      .page-title { font-size: 3rem; } 
+      .grid { grid-template-columns: 1fr; } 
+      .navbar { padding: 10px 20px; }
+      .site-name { font-size: 1.2rem; }
+      .nav-btn { padding: 8px 16px; font-size: 0.9rem; }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="nav-left">
-      <div class="logo">N</div>
-      <div class="site-name">Nexus Gaming Hub</div>
-    </div>
-
-    <div class="nav-right">
-      <a class="nav-btn" href="/games">Games</a>
-      <a class="nav-btn" href="/pricing">Pricing</a>
-    </div>
+  <div class="navbar-container">
+    <nav class="navbar">
+      <div class="nav-left">
+        <div class="logo">N</div>
+        <div class="site-name">VITB Games</div>
+      </div>
+      <div class="nav-right">
+        <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/"><span>Home</span></a>
+        <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/pricing"><span>Pricing</span></a>
+        <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/games"><span>Games</span></a>
+      </div>
+    </nav>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Bundle Bonus</h1>
-    <p>
-      Save more when you buy more. Game bundles are designed to reduce
-      the price per title, making it easier to build collections or
-      complete full game series without compromise.
-    </p>
-  </section>
+  <div class="main-content">
+    <header class="page-header">
+      <h1 class="page-title">Bundle Bonus</h1>
+      <p class="page-description">Save more when you buy more. Game bundles are designed to reduce the price per title, making it easier to build collections or complete full game series without compromise.</p>
+    </header>
 
-  <!-- BUNDLES -->
-  <div class="container">
-    <div class="grid">
-
-      <div class="bundle-card">
-        <h3>Starter Bundle</h3>
-        <p>
-          A small curated selection of popular titles at a reduced
-          per-game price. Ideal for new users.
-        </p>
-        <span class="tag">2–3 Games • Entry Bundle</span>
-      </div>
-
-      <div class="bundle-card">
-        <h3>Collection Bundle</h3>
-        <p>
-          A balanced bundle offering multiple titles with noticeable
-          savings, perfect for expanding your library.
-        </p>
-        <span class="tag">4–6 Games • Best Value</span>
-      </div>
-
-      <div class="bundle-card">
-        <h3>Complete Series Bundle</h3>
-        <p>
-          Includes an entire game series or franchise at the lowest
-          possible per-title cost.
-        </p>
-        <span class="tag">Full Series • Maximum Savings</span>
-      </div>
-
-      <!-- Add more bundles by duplicating a card -->
-
+    <div class="search-container">
+      <input type="text" id="bundleSearch" class="search-box" placeholder="Search for a bundle...">
     </div>
+
+    <div class="grid" id="bundle-grid">
+      </div>
   </div>
 
-  <footer>
-    Campus-only service. Bundles subject to availability.
-  </footer>
+  <footer>Campus-only service. Bundles subject to availability. Made with ❤️ by NooblyxMad.</footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const bundles = [
+        { title: "God of War – Complete Bundle", tag: "Action - Adventure • 7 Titles", description: "Includes the entire God of War franchise - all original Greek-era titles and modern Norse saga. Experience Kratos’ full journey - from the rise as the Ghost of Sparta and the fall of Olympus to his rebirth as a father battling gods in Norse mythology." },
+        { title: "The Last of Us: Duology", tag: "Action - Survival • 2 Titles", description: "Includes the full The Last of Us experience - Part I, the Left Behind story expansion, and Part II. Follow Joel and Ellie’s emotionally charged journey through a post-apocalyptic world shaped by survival, loss, and human relationships." },
+        { title: "Kingdom Come: Deliverance Duology", tag: "RPG - Simulation • 2 Titles", description: "The complete Henry of Skalitz saga. Immerse yourself in a gritty, realistic medieval world where your choices shape history across both the original masterpiece and the highly anticipated sequel." },
+        { title: "Modern Warfare Bundle", tag: "FPS - Action • Multi-Title", description: "The definitive tactical shooter collection. Features the iconic Modern Warfare campaigns and high-octane multiplayer experiences that redefined the genre." },
+        { title: "Horizon Series", tag: "Action - RPG • 2 Titles", description: "Includes Horizon Zero Dawn and Horizon Forbidden West. Uncover the mysteries of a world ruled by majestic machines as Aloy, traveling from the lush Sacred Lands to the dangerous Forbidden West." },
+        { title: "Assassin's Creed Bundle", tag: "Action - Stealth • Franchise", description: "A massive collection of history's greatest hidden conflicts. Traverse through the Crusades, the Renaissance, and the Viking Age in this sprawling open-world stealth series." },
+        { title: "DOOM Game Series", tag: "FPS - Action • 3 Titles", description: "The ultimate demon-slaying pack. Includes the modern reboot, the relentless DOOM Eternal, and the classic foundations that birthed the shooter genre." },
+        { title: "Grand Theft Auto Series", tag: "Action - Open World • Multi-Title", description: "The pinnacle of open-world gaming. From the neon lights of Vice City to the sprawling hills of Los Santos, experience the criminal underworld in high fidelity." },
+        { title: "Batman Arkham Series", tag: "Action - Adventure • 4 Titles", description: "Become the Batman. Includes Asylum, City, Origins, and the epic conclusion in Arkham Knight. The definitive superhero gaming experience with fluid combat and dark detective work." },
+        { title: "Devil May Cry Bundle", tag: "Hack & Slash - Action • 5 Titles", description: "Stylish action at its finest. Follow Dante, Nero, and V as they battle demonic invasions with high-speed, over-the-top combat and a killer soundtrack." },
+        { title: "Fallout Bundle", tag: "RPG - Open World • Multi-Title", description: "Welcome home to the wasteland. Explore post-nuclear America, scavenge for survival, and join factions in this legendary RPG series known for its dark humor and player freedom." },
+        { title: "Persona Bundle", tag: "JRPG - Social Sim • Multi-Title", description: "Balance high school life by day and dungeon crawling by night. Experience the stylish, emotionally resonant stories of the Phantom Thieves and S.E.E.S. in these modern JRPG classics." },
+        { title: "Hitman Bundle", tag: "Stealth - Sandbox • Trilogy", description: "Enter the world of Agent 47. Includes the complete World of Assassination trilogy. Master the art of the kill across dozens of sandbox locations with endless ways to eliminate targets." },
+        { title: "Need for Speed Bundle", tag: "Racing - Arcade • Multi-Title", description: "High-stakes street racing and police chases. Customize your dream ride and outrun the law in the most iconic entries of this long-running racing franchise." },
+        { title: "Demon Slayer Bundle", tag: "Fighting - Action • Multi-Title", description: "Unleash the Hinokami Kagura. Relive the story of the anime through intense arena combat, featuring your favorite characters from the Demon Slayer Corps." },
+        { title: "Final Fantasy Bundle", tag: "RPG - Adventure • Multi-Title", description: "A journey through worlds of magic and machinery. Includes various entries of the legendary franchise, featuring turn-based and action-driven storytelling." },
+        { title: "RDR Bundle", tag: "Action - Western • 2 Titles", description: "The epic tale of outlaws in a dying West. Experience the tragic story of Arthur Morgan and the subsequent hunt of John Marston across a breathtaking open world." },
+        { title: "Toby Fox Games", tag: "Indie - RPG • Duology", description: "The quirky and deep worlds of Undertale and Deltarune. Experience RPGs where you don't have to kill anyone, filled with heart, humor, and unforgettable characters." },
+        { title: "Hollow Knight: Duology", tag: "Metroidvania - Soulslike • 2 Titles", description: "Includes Hollow Knight and Hollow Knight: Silksong. Experience challenging Metroidvania exploration, precise combat, and deep lore in the world of Hallownest and beyond." }
+      ];
+
+      const bundleGrid = document.getElementById('bundle-grid');
+      const searchBox = document.getElementById('bundleSearch');
+
+      function renderBundles(filter = "") {
+        const filtered = bundles.filter(b => 
+          b.title.toLowerCase().includes(filter.toLowerCase()) || 
+          b.description.toLowerCase().includes(filter.toLowerCase()) ||
+          b.tag.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        if (filtered.length === 0) {
+          bundleGrid.innerHTML = `<div class="no-results" style="display:block"><h2>No bundles found.</h2></div>`;
+          return;
+        }
+
+        bundleGrid.innerHTML = filtered.map(b => `
+          <div class="bundle-card liquid-interactive">
+            <span class="tag">${b.tag}</span>
+            <h3>${b.title}</h3>
+            <p class="bundle-description">${b.description}</p>
+          </div>
+        `).join('');
+        
+        attachLiquidEffect();
+      }
+
+      function attachLiquidEffect() {
+        document.querySelectorAll('.liquid-interactive').forEach(el => {
+          el.onmousemove = e => {
+            const rect = el.getBoundingClientRect();
+            el.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+            el.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+          };
+        });
+      }
+
+      searchBox.oninput = e => renderBundles(e.target.value);
+      renderBundles();
+    });
+  </script>
 </body>
 </html>
