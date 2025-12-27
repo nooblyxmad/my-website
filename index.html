@@ -8,7 +8,7 @@
   <style>
     :root {
       /* Liquid Glass Variables */
-      --glass-bg: rgba(20, 20, 25, 0.4);
+      --glass-bg: rgba(20, 20, 25, 0.7);
       --glass-border: rgba(255, 255, 255, 0.12);
       --accent: #ffd369; /* Your signature gold */
       --accent-glow: rgba(255, 211, 105, 0.3);
@@ -51,6 +51,7 @@
     .reveal {
       opacity: 0;
       transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+      transform: translateY(30px);
     }
 
     .reveal.active {
@@ -88,7 +89,7 @@
       z-index: 1;
     }
 
-    /* ===== DYNAMIC NAVBAR PANEL ===== */
+    /* ===== FIXED NAVBAR PANEL (Merging Removed) ===== */
     .navbar-container {
       position: fixed;
       top: 0;
@@ -97,7 +98,6 @@
       z-index: 1000;
       display: flex;
       justify-content: center;
-      transition: all 0.4s ease;
     }
 
     .navbar {
@@ -105,21 +105,11 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 20px 60px;
-      background: transparent;
-      backdrop-filter: blur(0px);
-      -webkit-backdrop-filter: blur(0px);
-      border-bottom: 1px solid transparent;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Merging effect on scroll */
-    .navbar.scrolled {
+      padding: 18px 60px;
       background: var(--glass-bg);
       backdrop-filter: blur(25px) saturate(180%);
       -webkit-backdrop-filter: blur(25px) saturate(180%);
       border-bottom: 1px solid var(--glass-border);
-      padding: 15px 60px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     }
 
@@ -250,7 +240,6 @@
       border-radius: 30px;
       padding: 50px;
       transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      transform: translateY(20px);
     }
 
     .feature-card:hover {
@@ -290,7 +279,6 @@
       .hero { padding-top: 180px; }
       .hero h1 { font-size: 3rem; }
       .navbar { padding: 15px 25px; }
-      .navbar.scrolled { padding: 12px 20px; }
       .site-name { font-size: 1.2rem; }
       .nav-btn { padding: 8px 15px; font-size: 0.9rem; }
       .logo { width: 36px; height: 36px; }
@@ -300,8 +288,8 @@
 
 <body>
 
-  <div class="navbar-container" id="nav-container">
-    <nav class="navbar" id="main-nav">
+  <div class="navbar-container">
+    <nav class="navbar">
       <div class="nav-left">
         <div class="logo">N</div>
         <div class="site-name">VITB Games</div>
@@ -398,17 +386,7 @@
       });
     });
 
-    // 2. Dynamic Navbar Background
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('main-nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // 3. Fluid Scroll Reveal Animation
+    // 2. Fluid Scroll Reveal Animation
     const observerOptions = {
       threshold: 0.15
     };
