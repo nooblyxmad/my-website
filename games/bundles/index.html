@@ -98,9 +98,17 @@
     .search-box { width: 100%; padding: 18px 25px; border-radius: 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-main); font-size: 1.1rem; backdrop-filter: blur(10px); outline: none; transition: border-color 0.2s; }
     .search-box:focus { border-color: var(--accent); }
 
-    /* Grid Layout */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; margin-bottom: 80px; }
+    /* Grid Layout - Updated for equal height boxes */
+    .grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+      grid-auto-rows: 1fr; /* Forces all boxes in a row to have same length */
+      gap: 35px; 
+      margin-bottom: 80px; 
+    }
     
+    .bundle-link { text-decoration: none; color: inherit; display: block; height: 100%; }
+
     .bundle-card { 
       background: rgba(20, 20, 25, 0.3); 
       backdrop-filter: blur(20px); 
@@ -108,7 +116,7 @@
       border-radius: 28px; 
       padding: 35px; 
       transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
-      min-height: 280px; 
+      height: 100%; /* Card fills the grid cell length */
       display: flex; 
       flex-direction: column; 
     }
@@ -136,7 +144,7 @@
 
     @media (max-width: 850px) { 
       .page-title { font-size: 3rem; } 
-      .grid { grid-template-columns: 1fr; } 
+      .grid { grid-template-columns: 1fr; grid-auto-rows: auto; } 
       .navbar { padding: 10px 20px; }
       .site-name { font-size: 1.2rem; }
       .nav-btn { padding: 8px 16px; font-size: 0.9rem; }
@@ -162,7 +170,7 @@
   <div class="main-content">
     <header class="page-header">
       <h1 class="page-title">Bundle Bonus</h1>
-      <p class="page-description">Click on any bundle to buy it. Save more when you buy more, epic savings! Game bundles are designed to reduce the price per title, making it easier to build collections or complete full game series without compromise.</p>
+      <p class="page-description">Click on any bundle to buy it, prices vary for each bundle. Save more when you buy more. Game bundles are designed to reduce the price per title, making it easier to build collections or complete full game series without compromise.</p>
     </header>
 
     <div class="search-container">
@@ -178,13 +186,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const bundles = [
-        { title: "Grand Theft Auto: Series", tag: "Action - Open World • Multi-Title", description: "The definitive open-world experience. Includes GTA III, Vice City, San Andreas, IV, and V. Witness the evolution of the criminal underworld across iconic cities through interconnected stories of crime and survival." },
+        { title: "Grand Theft Auto: Series", tag: "Action - Open World • 5-6 Titles", description: "The definitive open-world experience. Includes GTA III, Vice City, San Andreas, IV, and V. Witness the evolution of the criminal underworld across iconic cities through interconnected stories of crime and survival." },
         { title: "COD Modern Warfare: Trilogy", tag: "FPS - Action • 3 Titles", description: "Experience the original Modern Warfare saga. Follow Captain Price and Task Force 141 through high-stakes global conflicts and iconic military operations that redefined the FPS genre." },
         { title: "Assassin's Creed: Mega Bundle", tag: "Action - Stealth • 13 Titles", description: "Spanning centuries of history from ancient civilizations to the modern age. Explore massive historical worlds and experience the eternal conflict between Assassins and Templars." },
         { title: "Read Dead Redemption: Duology", tag: "Action - Western • 2 Titles", description: "Includes RDR 1 and RDR 2. Tell the tragic and connected saga of the Van der Linde gang across a richly detailed America at the end of the outlaw era." },
         { title: "God of War – Complete Bundle", tag: "Action - Adventure • 7 Titles", description: "Kratos' full journey from the fall of Olympus to his rebirth in Norse mythology. Experience high-octane combat and deep narrative across both the Greek and Norse sagas." },
         { title: "Elden Ring: Trilogy", tag: "RPG - Action • 3 Titles", description: "Includes Elden Ring and Shadow of the Erdtree, delivering the complete journey through the lands between. Explore a vast open world shaped by deep lore, brutal combat, and player-driven discovery, expanded with new regions, story content, enemies, weapons, and bosses." },
-        { title: "Fallout: Bundle", tag: "RPG - Open World • Multi-Title", description: "Explore the wasteland in this legendary RPG series. Includes mainline entries from the isometric originals to the sprawling 3D open worlds of post-nuclear America." },
+        { title: "Fallout: Bundle", tag: "RPG - Open World • 5-6 Titles", description: "Explore the wasteland in this legendary RPG series. Includes mainline entries from the isometric originals to the sprawling 3D open worlds of post-nuclear America." },
         { title: "Final Fantasy: Mega Bundle", tag: "JRPG - Action • 15+ Titles", description: "The ultimate fantasy journey. From classic turn-based roots to modern action-driven storytelling, explore richly crafted worlds with unique settings and unforgettable characters." },
         { title: "Need for Speed: Mega Bundle", tag: "Racing - Arcade • 15+ Titles", description: "High-speed street culture and police pursuits. Race across cities in supercar collections featuring underground street racing and intense legal events." },
         { title: "The Last of Us: Duology", tag: "Action - Survival • 2 Titles", description: "Follow Joel and Ellie’s emotionally charged journey through a post-apocalyptic world. Experience survival, loss, and deep human relationships in a stunningly realized world." },
@@ -197,7 +205,7 @@
         { title: "Kingdom Come Deliverance: Duology", tag: "RPG - Simulation • 2 Titles", description: "Realistic medieval simulation in Bohemia. Follow Henry's rise from a blacksmith's son to a knight amid large-scale battles and personal revenge." },
         { title: "Demon Slayer: Duology", tag: "Fighting - Action • 2 Titles", description: "This duology brings the world of Kimetsu no Yaiba to life through action-packed combat and stylized presentation. Experience the anime’s story through cinematic battles, iconic characters, and visually striking attacks inspired by the series’ signature breathing techniques." },
         { title: "Hollow Knight: Duology", tag: "Metroidvania - Action • 2 Titles", description: "Explore the vast world of Hallownest and beyond. Includes the original masterpiece and the agile adventure of Silksong featuring Hornet." },
-        { title: "Toby Fox Games", tag: "Indie - RPG • Duology", description: "Heartfelt and humorous worlds of Undertale and Deltarune. Experience RPGs where choices matter and unforgettable characters await." }
+        { title: "Toby Fox Games", tag: "Indie - RPG • 2 Titles", description: "Heartfelt and humorous worlds of Undertale and Deltarune. Experience RPGs where choices matter and unforgettable characters await." }
       ];
 
       const bundleGrid = document.getElementById('bundle-grid');
@@ -216,11 +224,13 @@
         }
 
         bundleGrid.innerHTML = filtered.map(b => `
-          <div class="bundle-card liquid-interactive">
-            <span class="tag">${b.tag}</span>
-            <h3>${b.title}</h3>
-            <p class="bundle-description">${b.description}</p>
-          </div>
+          <a href="https://wa.me/918955623907?text=Hello, I would like to buy the ${encodeURIComponent(b.title)} bundle." class="bundle-link" target="_blank">
+            <div class="bundle-card liquid-interactive">
+              <span class="tag">${b.tag}</span>
+              <h3>${b.title}</h3>
+              <p class="bundle-description">${b.description}</p>
+            </div>
+          </a>
         `).join('');
         
         attachLiquidEffect();
@@ -242,6 +252,3 @@
   </script>
 </body>
 </html>
-
-Use this code and dont change anything else. make sure that whenever a person clicks on a bundle, it redirects them to this link:
-https://wa.me/918955623907?text=Hello, I would like to buy a game bundle.
