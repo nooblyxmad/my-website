@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casual & Indie Games | VITB Games Hub</title>
+  <title>Casual & Indie Games | VITB Games</title>
   <style>
     :root {
       --glass-bg: rgba(20, 20, 25, 0.7);
@@ -73,7 +73,7 @@
     }
 
     .nav-left { display: flex; align-items: center; gap: 16px; }
-    .logo { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; }
+    .logo { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; box-shadow: 0 0 20px var(--accent-glow); }
     .site-name { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.8px; }
 
     .nav-links { display: flex; gap: 12px; }
@@ -100,17 +100,12 @@
     .game-card { background: rgba(20, 20, 25, 0.3); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 35px; transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); min-height: 280px; display: flex; flex-direction: column; }
     .game-card:hover { transform: translateY(-10px); border-color: var(--accent); }
     .game-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; color: var(--accent); position: relative; z-index: 1; }
-    .game-genre { display: inline-block; padding: 6px 14px; background: rgba(255, 211, 105, 0.15); color: var(--accent); border-radius: 12px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
     .game-description { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 25px; flex-grow: 1; position: relative; z-index: 1; }
     
     .game-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); position: relative; z-index: 1; }
     .game-status { font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
     .status-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
     .status-indicator.available { background: #4ade80; box-shadow: 0 0 10px rgba(74, 222, 128, 0.5); }
-    .game-tag { font-size: 0.9rem; color: var(--accent); font-weight: 600; }
-
-    .no-results { text-align: center; padding: 40px; grid-column: 1 / -1; display: none; }
-    .no-results h2 { font-size: 2.2rem; color: var(--accent); letter-spacing: -1px; }
 
     footer { text-align: center; padding: 60px 20px 40px; font-size: 1rem; color: rgba(255,255,255,0.3); border-top: 1px solid var(--glass-border); }
 
@@ -128,7 +123,7 @@
     <nav class="navbar">
       <div class="nav-left">
         <div class="logo">N</div>
-        <div class="site-name">Nexus Gaming Hub</div>
+        <div class="site-name">VITB Games</div>
       </div>
       <div class="nav-links">
         <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/"><span>Home</span></a>
@@ -155,20 +150,21 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Organized Array: Alphabetical
       const games = [
-        { fullName: "Phasmophobia", genre: "Horror", tag: "Co-op", description: "A 4-player online co-op psychological horror where you and your team of ghost hunters enter haunted locations." },
-        { fullName: "God of War: Greek Collection", genre: "Action", tag: "Classic", description: "The original odyssey of Kratos through the pantheon of Greek mythology. High-octane hack and slash." },
-        { fullName: "Mario Collection", genre: "Platformer", tag: "Essential", description: "A selection of classic platforming adventures featuring everyone's favorite plumber." },
-        { fullName: "Blasphemous", genre: "Metroidvania", tag: "Hardcore", description: "A punishing action-platformer that combines fast-paced, skilled combat with a deep and evocative narrative core." },
-        { fullName: "Dead Cells", genre: "Roguelite", tag: "Action", description: "Explore a sprawling, ever-changing castle... assuming you’re able to fight your way past its keepers." },
-        { fullName: "Gully", genre: "Indie", tag: "Creative", description: "A unique indie title with distinct gameplay mechanics and a strong artistic vision." },
-        { fullName: "MHDR (Cuphead)", genre: "Action", tag: "Boss Rush", description: "Classic run and gun action heavily focused on boss battles, inspired by 1930s cartoons." },
-        { fullName: "Human Resource Machine", genre: "Puzzle", tag: "Educational", description: "A puzzle game for nerds. Program little office workers to solve puzzles. Be a good machine!" },
-        { fullName: "TIS-100", genre: "Programming", tag: "Hardcore", description: "The assembly language programming game you never asked for! Rewrite corrupted code to unlock secrets." },
-        { fullName: "Shenzhen I/O", genre: "Programming", tag: "Engineering", description: "Build circuits using components from a variety of manufacturers. Hardcore engineering puzzles." },
-        { fullName: "Screeps: World", genre: "Strategy", tag: "MMO", description: "An open-world MMO RTS game for programmers where you control your colony by writing JavaScript." },
-        { fullName: "5D Chess", genre: "Puzzle", tag: "Mind-bending", description: "Chess with Multiverse Time Travel. The first ever variant with spatial, temporal, and parallel dimensions." },
-        { fullName: "Megabonk", genre: "Casual", tag: "Fun", description: "A high-energy casual game perfect for quick sessions and blowing off steam." }
+        { fullName: "5D Chess", description: "Chess with Multiverse Time Travel. The first ever variant with spatial, temporal, and parallel dimensions." },
+        { fullName: "Blasphemous", description: "A punishing action-platformer that combines fast-paced, skilled combat with a deep and evocative narrative core." },
+        { fullName: "Bully", description: "Rule the halls of Bullworth Academy as Jimmy Hopkins, a mischievous teen navigating a school full of liars and snobs. Stand up to bullies, outsmart teachers, and pull pranks on and off campus to survive the year and rule the school." },
+        { fullName: "Dead Cells", description: "Explore a sprawling, ever-changing castle... assuming you’re able to fight your way past its keepers." },
+        { fullName: "God of War: Greek Collection", description: "The original odyssey of Kratos through the pantheon of Greek mythology. High-octane hack and slash." },
+        { fullName: "Human Resource Machine", description: "A puzzle game for nerds. Program little office workers to solve puzzles. Be a good machine!" },
+        { fullName: "Mario Collection", description: "A selection of classic platforming adventures featuring everyone's favorite plumber." },
+        { fullName: "Megabonk", description: "A roguelike survival game. Described as a 3D Vampire Survivors–like, it features procedurally generated maps, automatic combat against hordes of enemies, and character progression through randomized upgrades." },
+        { fullName: "MHRD", description: "MHRD is a hardware design game, in which you design various hardware circuits in a hardware description language. The hardware circuits you design get more complex as you go until you create a fully functional CPU design." },
+        { fullName: "Phasmophobia", description: "A 4-player online co-op psychological horror where you and your team of ghost hunters enter haunted locations." },
+        { fullName: "Screeps: World", description: "Screeps: World is an open source MMO RTS sandbox game for programming enthusiasts. You control your colony by writing JavaScript code that executes 24/7 in a massive, persistent world alongside other programmers." },
+        { fullName: "Shenzhen I/O", description: "Build circuits using components from a variety of manufacturers. Hardcore engineering puzzles." },
+        { fullName: "TIS-100", description: "The assembly language programming game you never asked for! Rewrite corrupted code to unlock secrets." }
       ];
 
       const gamesGrid = document.getElementById('games-grid');
@@ -176,8 +172,7 @@
 
       function renderGames(filter = "") {
         const filteredGames = games.filter(game => 
-          game.fullName.toLowerCase().includes(filter.toLowerCase()) ||
-          game.genre.toLowerCase().includes(filter.toLowerCase())
+          game.fullName.toLowerCase().includes(filter.toLowerCase())
         );
 
         if (filteredGames.length === 0) {
@@ -193,12 +188,10 @@
           const gameCard = document.createElement('div');
           gameCard.className = 'game-card liquid-interactive';
           gameCard.innerHTML = `
-            <span class="game-genre">${game.genre}</span>
             <h3>${game.fullName}</h3>
             <p class="game-description">${game.description}</p>
             <div class="game-meta">
               <div class="game-status"><span class="status-indicator available"></span>Ready to Play</div>
-              <div class="game-tag">${game.tag}</div>
             </div>`;
           fragment.appendChild(gameCard);
         });
