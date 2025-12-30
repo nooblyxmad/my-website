@@ -8,14 +8,13 @@
   <style>
     :root {
       /* Liquid Glass Variables */
-      --glass-bg: rgba(10, 10, 15, 0.7);
+      --glass-bg: rgba(20, 20, 25, 0.7); /* Updated to match Source */
       --glass-border: rgba(255, 255, 255, 0.12);
       --accent: #ffd369;
       --accent-glow: rgba(255, 211, 105, 0.3);
       --text-main: #ffffff;
-      --text-muted: rgba(255, 255, 255, 0.7);
-      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-        "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --text-muted: rgba(255, 255, 255, 0.75);
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
     }
 
     * {
@@ -41,6 +40,91 @@
       filter: blur(80px);
       opacity: 0.6;
     }
+
+    /* ===== NAVBAR STYLES (IMPORTED FROM GAMES PAGE) ===== */
+    .navbar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 100%; 
+      padding: 18px 60px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border-bottom: 1px solid var(--glass-border);
+      border-radius: 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .site-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 12px 24px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid transparent;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; /* For span z-index */
+    }
+
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.12);
+      transform: scale(1.05);
+      border-color: var(--glass-border);
+    }
+
+    /* Mobile Optimization for Navbar */
+    @media (max-width: 850px) {
+      .navbar { padding: 10px 20px; }
+      .site-name { font-size: 1.2rem; }
+      .nav-btn { padding: 8px 16px; font-size: 0.9rem; }
+    }
+
+    /* ===== EXISTING HOME PAGE STYLES BELOW ===== */
 
     @keyframes revealUp {
       from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
@@ -85,71 +169,8 @@
       z-index: 1;
     }
 
-    .navbar-container {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      padding: 18px 60px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(25px) saturate(180%);
-      border-bottom: 1px solid var(--glass-border);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.3rem;
-    }
-
-    .site-name {
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: -0.8px;
-    }
-
-    .nav-links { display: flex; gap: 12px; }
-
-    .nav-btn {
-      padding: 10px 20px;
-      border-radius: 12px;
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 1.05rem;
-      font-weight: 600;
-      background: rgba(255,255,255,0.03);
-      transition: all 0.3s ease;
-    }
-
-    .nav-btn:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-2px);
-    }
-
     .hero {
-      padding: 250px 20px 100px;
+      padding: 250px 20px 100px; /* Kept adequate padding for fixed header */
       text-align: center;
       max-width: 950px;
       margin: auto;
@@ -175,7 +196,7 @@
     }
 
     .cta {
-      padding: 12px 36px; /* Optimized sizing */
+      padding: 12px 36px;
       border-radius: 100px;
       background: var(--accent);
       color: #000;
@@ -261,7 +282,8 @@
       <div class="logo">N</div>
       <div class="site-name">VITB Games</div>
     </div>
-    <div class="nav-links">
+    
+    <div class="nav-right">
       <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/about"><span>About</span></a>
       <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/pricing"><span>Pricing</span></a>
       <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/games"><span>Games</span></a>
