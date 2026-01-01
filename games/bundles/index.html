@@ -106,7 +106,7 @@
       gap: 35px; 
       margin-bottom: 80px; 
     }
-    
+     
     .bundle-link { text-decoration: none; color: inherit; display: block; height: 100%; }
 
     .bundle-card { 
@@ -122,7 +122,7 @@
     }
     .bundle-card:hover { transform: translateY(-10px); border-color: var(--accent); }
     .bundle-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; color: var(--accent); position: relative; z-index: 1; }
-    
+     
     .tag { 
       display: inline-block; 
       padding: 6px 14px; 
@@ -136,6 +136,28 @@
     }
 
     .bundle-description { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 25px; flex-grow: 1; position: relative; z-index: 1; }
+
+    /* Status Footer Styles */
+    .card-footer {
+      border-top: 1px solid var(--glass-border);
+      padding-top: 20px;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+    }
+    .status-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
 
     .no-results { text-align: center; padding: 40px; grid-column: 1 / -1; display: none; }
     .no-results h2 { font-size: 2.2rem; color: var(--accent); letter-spacing: -1px; }
@@ -229,6 +251,10 @@
               <span class="tag">${b.tag}</span>
               <h3>${b.title}</h3>
               <p class="bundle-description">${b.description}</p>
+              <div class="card-footer">
+                <div class="status-dot"></div>
+                <span class="status-text">Ready to Play</span>
+              </div>
             </div>
           </a>
         `).join('');
