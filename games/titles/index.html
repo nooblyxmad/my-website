@@ -96,8 +96,29 @@
     .search-box { width: 100%; padding: 18px 25px; border-radius: 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-main); font-size: 1.1rem; backdrop-filter: blur(10px); outline: none; transition: border-color 0.2s; }
     .search-box:focus { border-color: var(--accent); }
 
-    .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; margin-bottom: 80px; }
-    .game-card { background: rgba(20, 20, 25, 0.3); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 35px; transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); min-height: 280px; display: flex; flex-direction: column; }
+    /* EDITED: Added align-items: stretch to force rows to be equal height */
+    .games-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+      gap: 35px; 
+      margin-bottom: 80px;
+      align-items: stretch; 
+    }
+
+    /* EDITED: Added height: 100% so the card background fills the stretched grid cell */
+    .game-card { 
+      background: rgba(20, 20, 25, 0.3); 
+      backdrop-filter: blur(20px); 
+      border: 1px solid var(--glass-border); 
+      border-radius: 28px; 
+      padding: 35px; 
+      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
+      min-height: 280px; 
+      height: 100%; /* Ensures uniform shape */
+      display: flex; 
+      flex-direction: column; 
+    }
+
     .game-card:hover { transform: translateY(-10px); border-color: var(--accent); }
     .game-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; color: var(--accent); position: relative; z-index: 1; }
     .game-genre { display: inline-block; padding: 6px 14px; background: rgba(255, 211, 105, 0.15); color: var(--accent); border-radius: 12px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
@@ -156,15 +177,15 @@
     document.addEventListener('DOMContentLoaded', function() {
       const games = [
         { fullName: "Assassin's Creed: Shadows", genre: "Action", year: "2025", status: "available", description: "Experience the Assassin's Creed Sengoku era with a reimagined Stealth System and next-gen parkour mechanics." },
-        { fullName: "Black Myth: Wukong", genre: "Action", year: "2024", status: "available", description: "An action-adventure inspired by Chinese mythology, featuring fluid combat and breathtaking environments." },
-        { fullName: "Borderlands 4", genre: "Action", year: "2025", status: "available", description: "A fast-paced looter-shooter based on chaotic gunplay, bold visuals, and signature humor." },
-        { fullName: "EA Sports: F1 25", genre: "Sports", year: "2025", status: "available", description: "Experience the 2025 season with a reimagined Career Mode and next-gen physics." },
-        { fullName: "EA Sports: FC 26", genre: "Sports", year: "2025", status: "available", description: "Experience the next era of the world’s game featuring revolutionary HyperMotion tech." },
+        { fullName: "Black Myth: Wukong", genre: "Action", year: "2024", status: "available", description: "A myth-driven action adventure rooted in Chinese folklore, delivering fast, precise combat, epic boss battles, and visually stunning realms inspired by ancient legends." },
+        { fullName: "Borderlands 4", genre: "Action", year: "2025", status: "available", description: "A fast-paced looter-shooter delivering chaotic gunplay, outrageous weapons, bold visuals, all wrapped in an explosive next-generation co-op experience." },
+        { fullName: "EA Sports: F1 25", genre: "Sports", year: "2025", status: "available", description: "Experience the full 2025 F1 season with a reimagined Career Mode, next-generation physics, enhanced realism, and immersive race presentation built for competitive motorsport fans." },
+        { fullName: "EA Sports: FC 26", genre: "Sports", year: "2025", status: "available", description: "Experience the next era of the world’s game with revolutionary HyperMotion technology, enhanced realism, smarter player movement, and immersive match-day presentation built for competitive football." },
         { fullName: "Mortal Kombat 1", genre: "Action", year: "2023", status: "available", description: "The iconic fighting franchise is reborn with new storylines and next-gen fatalities." },
-        { fullName: "Stellar Blade", genre: "Action", year: "2024", status: "available", description: "A high-octane action experience featuring intense blade combat set in a post-apocalyptic Earth." },
-        { fullName: "Anno 117: Pax Romana", genre: "Strategy", year: "2025", status: "available", description: "Govern your provinces, establish trade routes, and maintain the Pax Romana in this deep historical simulation." },
+        { fullName: "Stellar Blade", genre: "Action", year: "2024", status: "available", description: "A high-octane action experience set in a post-apocalyptic Earth, featuring intense blade-focused combat, cinematic boss encounters, fluid movement, and a visually striking sci-fi world." },
+        { fullName: "Anno 117: Pax Romana", genre: "Strategy", year: "2025", status: "available", description: "Govern vast Roman provinces, establish complex trade routes, manage resources, and preserve the Pax Romana in a deep historical strategy simulation built around empire-scale decision-making." },
         { fullName: "Prince of Persia: The Lost Crown", genre: "Action", year: "2024", status: "available", description: "A stylish action-adventure platformer set in a mythological Persian world. Use your time powers to defeat enemies." },
-        { fullName: "Madden NFL 26", genre: "Sports", year: "2025", status: "available", description: "Lead your team to Super Bowl glory with overhauled physics and next-generation FieldSENSE." },
+        { fullName: "Madden NFL 26", genre: "Sports", year: "2025", status: "available", description: "Lead your franchise to Super Bowl glory with overhauled physics, next-generation FieldSENSE gameplay, smarter AI, and an authentic NFL presentation designed for competitive play." },
         { fullName: "Atomfall", genre: "Action", year: "2025", status: "available", description: "A survival-action game set in the British countryside following a nuclear disaster." },
         { fullName: "Atomic Heart", genre: "Action", year: "2023", status: "available", description: "Fight for your life against rogue robots in this high-paced FPS set in an alternate Soviet era." },
         { fullName: "Football Manager 26", genre: "Sports", year: "2025", status: "available", description: "Lead your favorite club to continental glory with unprecedented tactical control." },
@@ -189,31 +210,19 @@
         }
 
         const fragment = document.createDocumentFragment();
-filteredGames.forEach(game => {
-  const link = document.createElement('a');
-  link.href = `https://wa.me/918955623907?text=Hello, I would like to buy the ${encodeURIComponent(game.fullName)}.`;
-  link.target = "_blank";
-  link.style.textDecoration = "none";
-  link.style.color = "inherit";
-
-  const gameCard = document.createElement('div');
-  gameCard.className = 'game-card liquid-interactive';
-  gameCard.innerHTML = `
-    <span class="game-genre">${game.genre}</span>
-    <h3>${game.fullName}</h3>
-    <p class="game-description">${game.description}</p>
-    <div class="game-meta">
-      <div class="game-status">
-        <span class="status-indicator available"></span>Available Now
-      </div>
-      <div class="game-year">${game.year}</div>
-    </div>
-  `;
-
-  link.appendChild(gameCard);
-  fragment.appendChild(link);
-});
-
+        filteredGames.forEach(game => {
+          const gameCard = document.createElement('div');
+          gameCard.className = 'game-card liquid-interactive';
+          gameCard.innerHTML = `
+            <span class="game-genre">${game.genre}</span>
+            <h3>${game.fullName}</h3>
+            <p class="game-description">${game.description}</p>
+            <div class="game-meta">
+              <div class="game-status"><span class="status-indicator available"></span>Available Now</div>
+              <div class="game-year">${game.year}</div>
+            </div>`;
+          fragment.appendChild(gameCard);
+        });
 
         gamesGrid.innerHTML = '';
         gamesGrid.appendChild(fragment);
