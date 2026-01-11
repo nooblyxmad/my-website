@@ -189,19 +189,31 @@
         }
 
         const fragment = document.createDocumentFragment();
-        filteredGames.forEach(game => {
-          const gameCard = document.createElement('div');
-          gameCard.className = 'game-card liquid-interactive';
-          gameCard.innerHTML = `
-            <span class="game-genre">${game.genre}</span>
-            <h3>${game.fullName}</h3>
-            <p class="game-description">${game.description}</p>
-            <div class="game-meta">
-              <div class="game-status"><span class="status-indicator available"></span>Available Now</div>
-              <div class="game-year">${game.year}</div>
-            </div>`;
-          fragment.appendChild(gameCard);
-        });
+filteredGames.forEach(game => {
+  const link = document.createElement('a');
+  link.href = `https://wa.me/918955623907?text=Hello, I would like to buy the ${encodeURIComponent(game.fullName)}.`;
+  link.target = "_blank";
+  link.style.textDecoration = "none";
+  link.style.color = "inherit";
+
+  const gameCard = document.createElement('div');
+  gameCard.className = 'game-card liquid-interactive';
+  gameCard.innerHTML = `
+    <span class="game-genre">${game.genre}</span>
+    <h3>${game.fullName}</h3>
+    <p class="game-description">${game.description}</p>
+    <div class="game-meta">
+      <div class="game-status">
+        <span class="status-indicator available"></span>Available Now
+      </div>
+      <div class="game-year">${game.year}</div>
+    </div>
+  `;
+
+  link.appendChild(gameCard);
+  fragment.appendChild(link);
+});
+
 
         gamesGrid.innerHTML = '';
         gamesGrid.appendChild(fragment);
