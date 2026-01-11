@@ -105,6 +105,14 @@
       align-items: stretch; 
     }
 
+    /* EDITED: Added .game-link style to handle the anchor tag layout */
+    .game-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+
     /* EDITED: Added height: 100% so the card background fills the stretched grid cell */
     .game-card { 
       background: rgba(20, 20, 25, 0.3); 
@@ -211,6 +219,13 @@
 
         const fragment = document.createDocumentFragment();
         filteredGames.forEach(game => {
+          // Create Anchor Tag
+          const gameLink = document.createElement('a');
+          gameLink.className = 'game-link';
+          gameLink.href = `https://wa.me/918955623907?text=Hello, I would like to buy ${encodeURIComponent(game.fullName)}.`;
+          gameLink.target = "_blank";
+
+          // Create Game Card Div
           const gameCard = document.createElement('div');
           gameCard.className = 'game-card liquid-interactive';
           gameCard.innerHTML = `
@@ -221,7 +236,10 @@
               <div class="game-status"><span class="status-indicator available"></span>Available Now</div>
               <div class="game-year">${game.year}</div>
             </div>`;
-          fragment.appendChild(gameCard);
+          
+          // Append Card to Link, and Link to Fragment
+          gameLink.appendChild(gameCard);
+          fragment.appendChild(gameLink);
         });
 
         gamesGrid.innerHTML = '';
