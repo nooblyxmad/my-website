@@ -8,7 +8,7 @@
   <style>
     :root {
       /* Liquid Glass Variables */
-      --glass-bg: rgba(20, 20, 25, 0.7); /* Updated to match Source */
+      --glass-bg: rgba(20, 20, 25, 0.7);
       --glass-border: rgba(255, 255, 255, 0.12);
       --accent: #ffd369;
       --accent-glow: rgba(255, 211, 105, 0.3);
@@ -41,7 +41,7 @@
       opacity: 0.6;
     }
 
-    /* ===== NAVBAR STYLES (IMPORTED FROM GAMES PAGE) ===== */
+    /* ===== NAVBAR STYLES ===== */
     .navbar-container {
       position: fixed;
       top: 0;
@@ -57,13 +57,11 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 100%; 
       padding: 18px 60px;
       background: var(--glass-bg);
       backdrop-filter: blur(25px) saturate(180%);
       -webkit-backdrop-filter: blur(25px) saturate(180%);
       border-bottom: 1px solid var(--glass-border);
-      border-radius: 0;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     }
 
@@ -108,7 +106,7 @@
       font-size: 1.05rem;
       font-weight: 600;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative; /* For span z-index */
+      position: relative;
     }
 
     .nav-btn:hover {
@@ -117,15 +115,13 @@
       border-color: var(--glass-border);
     }
 
-    /* Mobile Optimization for Navbar */
     @media (max-width: 850px) {
       .navbar { padding: 10px 20px; }
       .site-name { font-size: 1.2rem; }
       .nav-btn { padding: 8px 16px; font-size: 0.9rem; }
     }
 
-    /* ===== EXISTING HOME PAGE STYLES BELOW ===== */
-
+    /* ===== REVEAL ANIMATIONS ===== */
     @keyframes revealUp {
       from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
       to { opacity: 1; transform: translateY(0); filter: blur(0); }
@@ -142,6 +138,7 @@
       transform: translateY(0);
     }
 
+    /* ===== LIQUID INTERACTIVE EFFECT ===== */
     .liquid-interactive {
       position: relative;
       overflow: hidden;
@@ -164,13 +161,14 @@
 
     .liquid-interactive:hover::before { opacity: 1; }
 
-    .nav-btn span, .cta span, .feature-card h3, .feature-card p {
+    .nav-btn span, .cta span, .feature-card h3, .feature-card p, .contributor-info h3, .collab-content * {
       position: relative;
       z-index: 1;
     }
 
+    /* ===== HERO SECTION ===== */
     .hero {
-      padding: 250px 20px 100px; /* Kept adequate padding for fixed header */
+      padding: 250px 20px 100px;
       text-align: center;
       max-width: 950px;
       margin: auto;
@@ -213,8 +211,9 @@
       box-shadow: 0 15px 50px var(--accent-glow);
     }
 
+    /* ===== FEATURES SECTION ===== */
     #about {
-      padding: 100px 20px 120px;
+      padding: 100px 20px 60px;
       max-width: 1200px;
       margin: auto;
     }
@@ -237,6 +236,7 @@
     .feature-card {
       background: rgba(20,20,25,0.4);
       backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border: 1px solid var(--glass-border);
       border-radius: 30px;
       padding: 50px;
@@ -249,18 +249,69 @@
       border-color: var(--accent);
     }
 
-    .feature-card h3 {
-      margin-top: 0;      
-      margin-bottom: 20px;
-      color: var(--accent);
-      font-size: 1.7rem;
+    .feature-card h3 { margin-bottom: 20px; color: var(--accent); font-size: 1.7rem; }
+    .feature-card p { color: var(--text-muted); line-height: 1.7; font-size: 1.15rem; }
+
+    /* ===== COLLABORATE SECTION ===== */
+    #collab-info {
+      padding: 100px 20px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
     }
 
-    .feature-card p {
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-size: 1.15rem;
+    .collab-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 50px;
+      backdrop-filter: blur(10px);
     }
+
+    /* ===== CONTRIBUTORS SECTION ===== */
+    #contributors {
+      padding: 20px 20px 120px;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    #contributors h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      background: linear-gradient(to right, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contributors-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .contributor-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      padding: 20px 30px; /* Increased size */
+      border-radius: 16px;
+      min-width: 200px; /* Increased width */
+      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contributor-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .contributor-info h3 { margin: 0; font-size: 1.15rem; color: #fff; font-weight: 700; } /* Slightly larger text */
 
     footer {
       padding: 100px 20px 60px;
@@ -282,7 +333,6 @@
       <div class="logo">N</div>
       <div class="site-name">VITB Games</div>
     </div>
-    
     <div class="nav-right">
       <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/about"><span>About</span></a>
       <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/pricing"><span>Pricing</span></a>
@@ -294,43 +344,80 @@
 <section class="hero">
   <h1>High-End Gaming??<br>No Worries.</h1>
   <p>
-    I am <strong>NooblyxMad</strong>. I provide a refined gaming experience for students stuck behind Wi-Fi restrictions and downloads. Get access to the latest AAA titles and premium Denuvo-protected content without any headache.
+    I am <strong>NooblyxMad</strong>. I provide a refined gaming experience for students stuck behind Wi-Fi restrictions and downloads. Get access to the latest AAA titles and premium Denuvo-protected content.
   </p>
   <a class="cta liquid-interactive" href="https://vitbgames.vercel.app/games"><span>Browse the Catalog</span></a>
 </section>
 
 <section id="about">
   <h2 class="reveal">Our Features</h2>
-
   <div class="features-grid">
     <div class="feature-card liquid-interactive reveal">
       <h3>Premium Access</h3>
-      <p>Handpicked games, providing access to high-quality PC titles, focusing on stability, performance, and a complete gaming experience.</p>
+      <p>Handpicked games, providing access to high-quality PC titles, focusing on stability and performance.</p>
     </div>
-
     <div class="feature-card liquid-interactive reveal">
       <h3>Up-to-Date Library</h3>
-      <p>Never lag behind. Our collection is updated regularly with the latest AAA releases as soon as they drop, ensuring access to the newest games.</p>
+      <p>Never lag behind. Our collection is updated regularly with the latest AAA releases as soon as they drop.</p>
     </div>
-
     <div class="feature-card liquid-interactive reveal">
       <h3>Ready-to-Play</h3>
-      <p>Games are tested and ready-to-play, for stability and reliability, saving time and ensuring a smooth experience.</p>
+      <p>Games are tested and ready-to-play, for stability and reliability, ensuring a smooth experience.</p>
     </div>
-
     <div class="feature-card liquid-interactive reveal">
       <h3>On-Demand Requests</h3>
-      <p>Can’t find what you’re looking for? If it's not available in the catalog, request it and I'll source it for you, on demand.</p>
+      <p>Can’t find what you’re looking for? Request it and I'll source it for you, on demand.</p>
     </div>
-
     <div class="feature-card liquid-interactive reveal">
       <h3>Bundle Value</h3>
-      <p>Complete game series are available as bundles at a much lower cost, compared to individual purchases.</p>
+      <p>Complete game series available as bundles at a much lower cost compared to individual purchases.</p>
     </div>
-
     <div class="feature-card liquid-interactive reveal">
       <h3>Campus-Only Focus</h3>
-      <p>By operating solely within the campus ecosystem, the service offers quicker delivery, prioritized requests, and consistent support.</p>
+      <p>Quick delivery, prioritized requests, and consistent support within the campus ecosystem.</p>
+    </div>
+  </div>
+</section>
+
+<section id="collab-info">
+  <div class="collab-card liquid-interactive reveal">
+    <div class="collab-content">
+      <h3 style="color: var(--accent); font-size: 1.8rem; margin-top: 0;">Support this project!</h3>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.8; margin-bottom: 0;">
+        VITB Games was built by NooblyxMad, a student just like you. Every opinion shapes the website and the project. Whether you're a developer, a designer, or a gamer - your support makes this project possible. Help us keep the campus gaming scene alive and unrestricted.
+        <br><br>
+        <strong style="color: #fff;">Wanna help? Reach out to @nooblyxmad on discord or instagram.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contributors">
+  <h2 class="reveal">Our Contributors</h2>
+  <div class="contributors-container reveal">
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Priyansh Bhatt</h3></div>
+    </div>
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Blesson T. Abraham</h3></div>
+    </div>
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Jayesh Mandal</h3></div>
+    </div>
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Ayush Misra</h3></div>
+    </div>
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Raunak Tripathi</h3></div>
+    </div>
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Abhishek Chauhan</h3></div>
+    </div>
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Yuvraj Singh</h3></div>
+    </div>
+    <div class="contributor-card liquid-interactive">
+      <div class="contributor-info"><h3>Jayesh Joshi</h3></div>
     </div>
   </div>
 </section>
@@ -352,8 +439,8 @@
     init() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 1.5;
-      this.vy = (Math.random() - 0.5) * 1.5;
+      this.vx = (Math.random() - 0.5) * 0.8; 
+      this.vy = (Math.random() - 0.5) * 0.8;
       this.size = Math.random() * 200 + 150;
       this.color = colors[Math.floor(Math.random() * colors.length)];
     }
@@ -362,8 +449,8 @@
       this.y += this.vy;
       const dx = mouse.x - this.x, dy = mouse.y - this.y;
       if (Math.hypot(dx, dy) < 400) {
-        this.vx += dx * 0.0001;
-        this.vy += dy * 0.0001;
+        this.vx += dx * 0.00005;
+        this.vy += dy * 0.00005;
       }
       if (this.x < -this.size) this.x = width + this.size;
       if (this.y < -this.size) this.y = height + this.size;
@@ -410,7 +497,7 @@
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => e.isIntersecting && e.target.classList.add('active'));
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
