@@ -74,7 +74,7 @@
     }
 
     .nav-left { display: flex; align-items: center; gap: 16px; }
-    .logo { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; }
+    .logo { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; box-shadow: 0 0 20px var(--accent-glow); }
     .site-name { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.8px; }
 
     .nav-links { display: flex; gap: 12px; }
@@ -105,12 +105,12 @@
       gap: 35px;
       margin-bottom: 80px; 
     }
-     
+      
     .bundle-link { 
       text-decoration: none; 
       color: inherit; 
       display: block;
-      height: 100%; /* Stretches to fill grid cell */
+      height: 100%; 
     }
 
     .bundle-card { 
@@ -120,13 +120,13 @@
       border-radius: 28px; 
       padding: 35px; 
       transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
-      height: 100%; /* Ensures equal height in rows */
+      height: 100%; 
       display: flex; 
       flex-direction: column; 
     }
     .bundle-card:hover { transform: translateY(-10px); border-color: var(--accent); }
     .bundle-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; color: var(--accent); position: relative; z-index: 1; }
-     
+      
     .tag { 
       display: inline-block; 
       padding: 6px 14px; 
@@ -139,7 +139,7 @@
       width: fit-content;
     }
 
-    .bundle-description { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 15px; position: relative; z-index: 1; flex-grow: 1; /* Pushes footer down to align */ }
+    .bundle-description { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 15px; position: relative; z-index: 1; flex-grow: 1; }
 
     /* Status Footer Styles */
     .card-footer {
@@ -185,7 +185,7 @@
         <div class="logo">N</div>
         <div class="site-name">VITB Games</div>
       </div>
-      <div class="nav-right">
+      <div class="nav-links">
         <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/"><span>Home</span></a>
         <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/pricing"><span>Pricing</span></a>
         <a class="nav-btn liquid-interactive" href="https://vitbgames.vercel.app/games"><span>Games</span></a>
@@ -203,17 +203,16 @@
       <input type="text" id="bundleSearch" class="search-box" placeholder="Search for a bundle...">
     </div>
 
-    <div class="grid" id="bundle-grid">
-      </div>
+    <div class="grid" id="bundle-grid"></div>
   </div>
 
-  <footer>Campus-only service. Made with ❤️ by NooblyxMad. Play on..</footer>
+  <footer>Campus-only service. Made with ❤️ by NooblyxMad. Play on.</footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const bundles = [
         { title: "Grand Theft Auto: Series", tag: "Action - Open World • 5-6 Titles", description: "The definitive open-world experience. Includes GTA Vice City, San Andreas, III, IV, and V. Rule the criminal underworld across iconic cities through interconnected stories of crime and survival." },
-	{ title: "Spider Man: Trilogy", tag: "Action/Adventure - Open World • 3 Titles", description: "Experience the complete Spider-Man universe. This bundle brings together Insomniac Games' critically acclaimed trilogy. From Peter Parker’s battle to save New York, to the rise of Miles Morales, and their explosive team-up against the ultimate Venom." },
+        { title: "Spider Man: Trilogy", tag: "Action/Adventure - Open World • 3 Titles", description: "Experience the complete Spider-Man universe. This bundle brings together Insomniac Games' critically acclaimed trilogy. From Peter Parker’s battle to save New York, to the rise of Miles Morales, and their explosive team-up against the ultimate Venom." },
         { title: "COD Modern Warfare: Trilogy", tag: "FPS - Action • 3 Titles", description: "Experience the original Modern Warfare saga. Follow Captain Price and Task Force 141 through high-stakes global conflicts and iconic military operations that redefined the FPS genre." },
         { title: "Assassin's Creed: Mega Bundle", tag: "Action - Stealth • 13 Titles", description: "Spanning centuries of history from ancient civilizations to the modern age. Explore massive historical worlds and experience the eternal conflict between Assassins and Templars." },
         { title: "Read Dead Redemption: Duology", tag: "Action - Western • 2 Titles", description: "Includes RDR 1 and RDR 2. Tell the tragic and connected saga of the Van der Linde gang across a richly detailed America at the end of the outlaw era." },
